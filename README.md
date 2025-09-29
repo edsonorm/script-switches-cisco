@@ -1,1 +1,1 @@
-# script-switches-cisco
+# script-switche-cisco
