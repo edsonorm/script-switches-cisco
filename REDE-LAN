@@ -1,0 +1,161 @@
+CONFIGURAÇÃO
+enable
+configure terminal 
+hostname RT-01
+line console 0
+password  123456
+login 
+exec-timeout  8 0
+exit
+vlan 10
+Description Vendas
+exit
+vlan 20
+Description Marketing
+exit
+!
+interface vlan 10
+Description Vendas
+ip address 10.1.10.1 255.255.255.0
+no shutdown
+!
+exit
+interface GigabitEthernet 0/0
+no shutdown
+exit
+!
+interface GigabitEthernet 0/0.10
+#encapsulation  dot1Q 20
+ip address 10.1.10.1 255.255.255.0
+#encapsulation  dot1Q 10
+no shutdown
+!
+interface GigabitEthernet 0/0.20
+encapsulation  dot1Q 20
+ip address 10.1.20.1 255.255.255.0
+no shutdown
+
+###############
+CONFIGURAÇÃO
+enable
+configure terminal 
+hostname RT-01
+line console 0
+password  123456
+login 
+exec-timeout  8 0
+exit
+vlan 10
+Description Vendas
+exit
+vlan 20
+Description Marketing
+exit
+!
+interface GigabitEthernet 0/0
+no shutdown
+exit
+!
+interface GigabitEthernet 0/0.10
+#encapsulation  dot1Q 20
+ip address 10.1.10.1 255.255.255.0
+#encapsulation  dot1Q 10
+no shutdown
+!
+interface GigabitEthernet 0/0.20
+encapsulation  dot1Q 20
+ip address 10.1.20.1 255.255.255.0
+no shutdown
+
+################
+
+CONFIGURAÇÃO
+enable 
+configure terminal 
+snmp-server location "Data Center 01"
+hostname SW-01
+line console 0
+password  123456
+login 
+exec-timeout  8 0
+exit
+vlan 10
+name Vendas
+exit
+vlan 20
+name Marketing
+exit
+!
+interface fastethernet0/2
+switchport mode access
+switchport access vlan 20
+no shutdown
+exit
+interface fastethernet0/4
+switchport mode access
+switchport access vlan 20
+no shutdown
+exit
+interface fastethernet0/3
+switchport mode access
+switchport access vlan 10
+no shutdown
+exit
+interface fastethernet0/1
+switchport mode access
+switchport access vlan 10
+no shutdown
+exit
+interface GigabitEthernet 0/2
+switchport mode trunk
+switchport mode trunk allowed vlan add 10-20
+no shutdown
+exit
+
+
+############
+
+CONFIGURAÇÃO
+enable
+configure terminal 
+snmp-server location "Data Center 01"
+hostname SW-02
+line console 0
+password  123456
+login 
+exec-timeout  8 0
+exit
+vlan 10
+name Vendas
+exit
+vlan 20
+name Marketing
+exit
+!
+interface fastethernet0/1
+switchport mode access
+switchport access vlan 20
+no shutdown
+exit
+interface fastethernet0/2
+switchport mode access
+switchport access vlan 10
+no shutdown
+exit
+interface fastethernet0/3
+switchport mode access
+switchport access vlan 20
+no shutdown
+exit
+interface fastethernet0/4
+switchport mode access
+switchport access vlan 10
+no shutdown
+exit
+interface GigabitEthernet 0/2
+switchport mode trunk
+no shutdown
+exit
+
+
+
